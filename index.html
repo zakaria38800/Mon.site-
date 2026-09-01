@@ -1,641 +1,919 @@
 <!DOCTYPE html>
 <html lang="fr">
-/* ===== BOUTONS QUI ATTIRENT L'ATTENTION ===== */
-
-.attention-button {
-  animation: gentleVibrate 2.8s ease-in-out infinite;
-}
-
-@keyframes gentleVibrate {
-  0%, 82%, 100% {
-    transform: translateX(0);
-  }
-
-  84% {
-    transform: translateX(-2px) rotate(-0.5deg);
-  }
-
-  86% {
-    transform: translateX(2px) rotate(0.5deg);
-  }
-
-  88% {
-    transform: translateX(-2px) rotate(-0.5deg);
-  }
-
-  90% {
-    transform: translateX(2px) rotate(0.5deg);
-  }
-
-  92% {
-    transform: translateX(0);
-  }
-}
-  <style>
-/* ===== PETITES ANIMATIONS ===== */
-
-/* Cartes légèrement animées */
-.service-card,
-.price-card,
-.project {
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
-}
-
-.service-card:hover,
-.price-card:hover,
-.project:hover {
-  transform: translateY(-7px);
-}
-
-/* Petites formes flottantes */
-.floating-shape {
-  position: fixed;
-  z-index: -1;
-  pointer-events: none;
-  opacity: 0.25;
-  animation: floating 7s ease-in-out infinite;
-}
-
-.floating-shape.one {
-  width: 55px;
-  height: 55px;
-  border-radius: 18px;
-  background: #ffb59f;
-  top: 25%;
-  left: 6%;
-  transform: rotate(20deg);
-}
-
-.floating-shape.two {
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  background: #70c9ff;
-  top: 62%;
-  right: 8%;
-  animation-delay: 2s;
-}
-
-.floating-shape.three {
-  width: 42px;
-  height: 42px;
-  border-radius: 12px;
-  background: #ffd45c;
-  top: 78%;
-  left: 12%;
-  transform: rotate(25deg);
-  animation-delay: 4s;
-}
-
-@keyframes floating {
-  0%, 100% {
-    margin-top: 0;
-  }
-
-  50% {
-    margin-top: -18px;
-  }
-}
-
-/* Petit effet sur les boutons */
-.btn {
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.btn:hover {
-  transform: translateY(-3px);
-}
-
-/* Animation douce des icônes */
-.service-icon {
-  transition: transform 0.35s ease;
-}
-
-.service-card:hover .service-icon {
-  transform: rotate(-5deg) scale(1.08);
-}
-
-/* Animation des emojis des réalisations */
-.project-visual {
-  transition: transform 0.4s ease;
-}
-
-.project:hover .project-visual {
-  transform: scale(1.03);
-}
-
-/* Petit mouvement du logo */
-.logo {
-  transition: transform 0.25s ease;
-  display: inline-block;
-}
-
-.logo:hover {
-  transform: rotate(-2deg) scale(1.03);
-}
-
-/* Respecte les appareils qui demandent moins d'animations */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation: none !important;
-    transition: none !important;
-  }
-}
-</style>
-  <head>
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Medjekal Zakaria | Création de sites web</title>
-  <meta name="description" content="Création de sites internet modernes, professionnels et personnalisés à Grenoble et partout en France.">
+
+  <meta
+    name="description"
+    content="Medjekal Zakaria crée des sites internet modernes, professionnels et personnalisés à Grenoble et partout en France."
+  >
 
   <style>
+
+    /* =========================================================
+       VARIABLES
+    ========================================================= */
+
     :root {
-      --bg: #fffaf5;
-      --bg2: #fff1e6;
-      --card: #ffffff;
+      --background: #fffaf6;
+      --background-soft: #fff1e8;
+      --white: #ffffff;
+
       --text: #202124;
-      --muted: #6b7280;
-      --primary: #ff6b4a;
-      --primary-dark: #e95738;
-      --yellow: #ffc857;
-      --blue: #55b8ff;
-      --green: #63c174;
-      --pink: #ff8fab;
-      --border: #f0ddd1;
-      --shadow: 0 15px 45px rgba(60, 35, 20, 0.10);
+      --text-soft: #667085;
+
+      --orange: #ff6847;
+      --orange-dark: #e95536;
+
+      --yellow: #ffd166;
+      --blue: #61bdf5;
+      --green: #6ac47a;
+      --pink: #ff9bb3;
+      --purple: #9d8cff;
+
+      --border: #f0ddd3;
+
+      --shadow-small:
+        0 8px 25px rgba(50, 30, 20, 0.07);
+
+      --shadow:
+        0 18px 50px rgba(50, 30, 20, 0.11);
     }
+
+
+    /* =========================================================
+       RESET
+    ========================================================= */
 
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+    }
+
+    html {
       scroll-behavior: smooth;
     }
 
-   <script>
-document.querySelectorAll('.btn').forEach(function(button) {
-  const text = button.textContent.toLowerCase();
-
-  if (
-    text.includes('demander un devis') ||
-    text.includes('me contacter') ||
-    text.includes('appeler maintenant') ||
-    text.includes('parlons de votre projet') ||
-    (
-      text.includes('choisir cette offre') &&
-      button.closest('.price-card')?.classList.contains('featured')
-    )
-  ) {
-    button.classList.add('attention-button');
-  }
-});
-</script>
     body {
-      <div class="floating-shape one"></div>
-<div class="floating-shape two"></div>
-<div class="floating-shape three"></div>
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--bg);
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+      background: var(--background);
       color: var(--text);
+
       line-height: 1.6;
+
       overflow-x: hidden;
     }
 
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
     a {
-      text-decoration: none;
       color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
     }
 
     .container {
       width: min(1120px, 92%);
-      margin: auto;
+      margin: 0 auto;
     }
 
-    /* ---------------- BACKGROUND ---------------- */
+
+    /* =========================================================
+       BACKGROUND
+    ========================================================= */
 
     .background-shape {
       position: fixed;
-      z-index: -1;
+
+      z-index: -10;
+
+      pointer-events: none;
+
       border-radius: 50%;
-      opacity: .35;
-      filter: blur(2px);
-      animation: float 8s ease-in-out infinite;
+
+      opacity: 0.35;
+
+      filter: blur(1px);
+
+      animation:
+        backgroundFloat
+        8s
+        ease-in-out
+        infinite;
     }
 
-    .shape1 {
-      width: 180px;
-      height: 180px;
-      background: #ffd6c9;
-      top: 12%;
-      left: -70px;
+    .background-shape.one {
+      width: 190px;
+      height: 190px;
+
+      background: #ffd8cc;
+
+      left: -80px;
+      top: 16%;
     }
 
-    .shape2 {
-      width: 140px;
-      height: 140px;
-      background: #ccecff;
-      top: 55%;
-      right: -50px;
+    .background-shape.two {
+      width: 145px;
+      height: 145px;
+
+      background: #cceeff;
+
+      right: -55px;
+      top: 50%;
+
       animation-delay: 2s;
     }
 
-    .shape3 {
-      width: 100px;
-      height: 100px;
-      background: #ffe69a;
-      bottom: 8%;
-      left: 8%;
+    .background-shape.three {
+      width: 110px;
+      height: 110px;
+
+      background: #ffe59b;
+
+      left: 7%;
+      bottom: 7%;
+
       animation-delay: 4s;
     }
 
-    @keyframes float {
-      0%, 100% {
-        transform: translateY(0) rotate(0deg);
+    @keyframes backgroundFloat {
+
+      0%,
+      100% {
+        transform:
+          translateY(0)
+          rotate(0deg);
       }
 
       50% {
-        transform: translateY(-18px) rotate(8deg);
+        transform:
+          translateY(-20px)
+          rotate(8deg);
       }
     }
 
-    /* ---------------- HEADER ---------------- */
+
+    /* =========================================================
+       PETITS DESSINS WEB
+    ========================================================= */
+
+    .floating-web {
+      position: fixed;
+
+      z-index: -3;
+
+      pointer-events: none;
+
+      font-size: 28px;
+
+      opacity: 0.30;
+
+      animation:
+        webFloat
+        7s
+        ease-in-out
+        infinite;
+    }
+
+    .web-one {
+      left: 5%;
+      top: 31%;
+    }
+
+    .web-two {
+      right: 6%;
+      top: 22%;
+
+      animation-delay: 1.5s;
+    }
+
+    .web-three {
+      left: 10%;
+      bottom: 27%;
+
+      animation-delay: 3s;
+    }
+
+    .web-four {
+      right: 12%;
+      bottom: 14%;
+
+      animation-delay: 4.5s;
+    }
+
+    @keyframes webFloat {
+
+      0%,
+      100% {
+        transform:
+          translateY(0)
+          rotate(-3deg);
+      }
+
+      50% {
+        transform:
+          translateY(-14px)
+          rotate(4deg);
+      }
+    }
+
+
+    /* =========================================================
+       HEADER
+    ========================================================= */
 
     header {
       position: sticky;
+
       top: 0;
+
       z-index: 100;
-      background: rgba(255,250,245,.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
+
+      background:
+        rgba(255, 250, 246, 0.93);
+
+      backdrop-filter:
+        blur(14px);
+
+      border-bottom:
+        1px solid var(--border);
     }
 
     nav {
       min-height: 72px;
+
       display: flex;
+
       align-items: center;
+
       justify-content: space-between;
+
       gap: 25px;
     }
 
     .logo {
       font-size: 21px;
-      font-weight: 800;
-      color: var(--primary);
+
+      font-weight: 900;
+
+      color: var(--orange);
+
+      display: inline-block;
+
+      transition:
+        transform 0.25s ease;
+    }
+
+    .logo:hover {
+      transform:
+        rotate(-2deg)
+        scale(1.03);
     }
 
     .nav-links {
-      display: flex;
-      gap: 22px;
       list-style: none;
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 21px;
+
       font-size: 14px;
-      font-weight: 600;
+
+      font-weight: 700;
     }
 
     .nav-links a {
-      transition: .2s;
+      transition:
+        color 0.2s ease;
     }
 
     .nav-links a:hover {
-      color: var(--primary);
+      color: var(--orange);
     }
 
-    .nav-button {
-      background: var(--primary);
-      color: white;
-      padding: 11px 18px;
-      border-radius: 25px;
-      font-weight: 700;
-      transition: .25s;
-    }
 
-    .nav-button:hover {
-      background: var(--primary-dark);
-      transform: translateY(-2px);
-    }
-
-    /* ---------------- HERO ---------------- */
-
-    .hero {
-      min-height: 680px;
-      display: flex;
-      align-items: center;
-      position: relative;
-      padding: 80px 0;
-    }
-
-    .hero-content {
-      max-width: 760px;
-    }
-
-    .badge {
-      display: inline-block;
-      background: #fff0e9;
-      color: var(--primary);
-      border: 1px solid #ffd4c7;
-      padding: 8px 15px;
-      border-radius: 30px;
-      font-weight: 700;
-      font-size: 14px;
-      margin-bottom: 22px;
-      animation: appear .7s ease;
-    }
-
-    .hero h1 {
-      font-size: clamp(42px, 7vw, 76px);
-      line-height: 1.03;
-      letter-spacing: -3px;
-      margin-bottom: 25px;
-    }
-
-    .hero h1 span {
-      color: var(--primary);
-    }
-
-    .hero p {
-      max-width: 680px;
-      font-size: 19px;
-      color: var(--muted);
-      margin-bottom: 32px;
-    }
-
-    .buttons {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
+    /* =========================================================
+       BOUTONS
+    ========================================================= */
 
     .btn {
       display: inline-flex;
+
       align-items: center;
+
       justify-content: center;
-      padding: 14px 22px;
+
+      gap: 8px;
+
+      min-height: 48px;
+
+      padding:
+        13px 20px;
+
       border-radius: 12px;
-      font-weight: 700;
-      transition: .25s;
+
+      border: none;
+
+      font-size: 15px;
+
+      font-weight: 800;
+
       cursor: pointer;
+
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
     }
 
     .btn-primary {
-      background: var(--primary);
+      background: var(--orange);
+
       color: white;
-      box-shadow: 0 10px 25px rgba(255,107,74,.22);
+
+      box-shadow:
+        0 10px 25px
+        rgba(255, 104, 71, 0.22);
     }
 
     .btn-primary:hover {
-      background: var(--primary-dark);
-      transform: translateY(-3px);
+      background: var(--orange-dark);
+
+      transform:
+        translateY(-3px);
+
+      box-shadow:
+        0 15px 30px
+        rgba(255, 104, 71, 0.28);
     }
 
     .btn-secondary {
       background: white;
-      border: 1px solid var(--border);
+
       color: var(--text);
+
+      border:
+        1px solid var(--border);
+
+      box-shadow:
+        0 5px 15px
+        rgba(50, 30, 20, 0.04);
     }
 
     .btn-secondary:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow);
+      transform:
+        translateY(-3px);
+
+      box-shadow:
+        var(--shadow-small);
     }
 
-    .hero-drawings {
+    .nav-button {
+      min-height: auto;
+
+      padding:
+        10px 17px;
+
+      border-radius: 30px;
+
+      background: var(--orange);
+
+      color: white;
+
+      font-size: 14px;
+
+      font-weight: 800;
+    }
+
+
+    /* =========================================================
+       VIBRATION DES BOUTONS IMPORTANTS
+    ========================================================= */
+
+    .attention-button {
+      animation:
+        gentleVibration
+        3.5s
+        ease-in-out
+        infinite;
+    }
+
+    @keyframes gentleVibration {
+
+      0%,
+      84%,
+      100% {
+        transform:
+          translateX(0)
+          rotate(0deg);
+      }
+
+      86% {
+        transform:
+          translateX(-2px)
+          rotate(-0.6deg);
+      }
+
+      88% {
+        transform:
+          translateX(2px)
+          rotate(0.6deg);
+      }
+
+      90% {
+        transform:
+          translateX(-2px)
+          rotate(-0.6deg);
+      }
+
+      92% {
+        transform:
+          translateX(2px)
+          rotate(0.6deg);
+      }
+
+      94% {
+        transform:
+          translateX(0)
+          rotate(0deg);
+      }
+    }
+
+
+    /* =========================================================
+       HERO
+    ========================================================= */
+
+    .hero {
+      position: relative;
+
+      min-height: 690px;
+
+      display: flex;
+
+      align-items: center;
+
+      padding:
+        90px 0;
+    }
+
+    .hero-content {
+      max-width: 760px;
+
+      position: relative;
+
+      z-index: 2;
+    }
+
+    .badge {
+      display: inline-flex;
+
+      align-items: center;
+
+      gap: 7px;
+
+      padding:
+        8px 15px;
+
+      margin-bottom: 22px;
+
+      border-radius: 30px;
+
+      background: #fff0e9;
+
+      border:
+        1px solid #ffd5c9;
+
+      color: var(--orange);
+
+      font-size: 14px;
+
+      font-weight: 800;
+    }
+
+    .hero h1 {
+      font-size:
+        clamp(43px, 7vw, 76px);
+
+      line-height: 1.02;
+
+      letter-spacing: -3px;
+
+      margin-bottom: 25px;
+    }
+
+    .hero h1 span {
+      color: var(--orange);
+    }
+
+    .hero p {
+      max-width: 690px;
+
+      color: var(--text-soft);
+
+      font-size: 19px;
+
+      margin-bottom: 32px;
+    }
+
+    .hero-buttons {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 13px;
+    }
+
+
+    /* =========================================================
+       HERO ILLUSTRATION
+    ========================================================= */
+
+    .hero-illustration {
       position: absolute;
+
       right: 4%;
-      top: 22%;
-      width: 270px;
-      height: 300px;
+
+      top: 21%;
+
+      width: 290px;
+
+      height: 320px;
+
       pointer-events: none;
     }
 
-    .drawing {
+    .hero-icon {
       position: absolute;
+
       font-size: 45px;
-      animation: drawingFloat 5s ease-in-out infinite;
+
+      animation:
+        heroIconFloat
+        5.5s
+        ease-in-out
+        infinite;
     }
 
-    .drawing:nth-child(1) {
-      top: 10px;
-      right: 30px;
+    .hero-icon.one {
+      right: 25px;
+      top: 5px;
     }
 
-    .drawing:nth-child(2) {
-      top: 130px;
-      left: 10px;
+    .hero-icon.two {
+      left: 15px;
+      top: 120px;
+
       animation-delay: 1s;
     }
 
-    .drawing:nth-child(3) {
-      bottom: 20px;
-      right: 60px;
+    .hero-icon.three {
+      right: 70px;
+      bottom: 30px;
+
       animation-delay: 2s;
     }
 
-    .drawing:nth-child(4) {
-      top: 90px;
+    .hero-icon.four {
       right: 100px;
+      top: 95px;
+
       animation-delay: 3s;
     }
 
-    @keyframes drawingFloat {
-      0%,100% {
-        transform: translateY(0) rotate(-3deg);
+    @keyframes heroIconFloat {
+
+      0%,
+      100% {
+        transform:
+          translateY(0)
+          rotate(-3deg);
       }
+
       50% {
-        transform: translateY(-12px) rotate(4deg);
+        transform:
+          translateY(-12px)
+          rotate(4deg);
       }
     }
 
-    @keyframes appear {
-      from {
-        opacity: 0;
-        transform: translateY(15px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
 
-    /* ---------------- SECTIONS ---------------- */
+    /* =========================================================
+       SECTIONS
+    ========================================================= */
 
     section {
-      padding: 90px 0;
+      padding:
+        90px 0;
     }
 
     .section-title {
+      max-width: 720px;
+
       text-align: center;
-      max-width: 700px;
-      margin: 0 auto 50px;
+
+      margin:
+        0 auto 50px;
     }
 
     .section-title small {
-      color: var(--primary);
-      font-weight: 800;
-      text-transform: uppercase;
+      color: var(--orange);
+
+      font-size: 13px;
+
+      font-weight: 900;
+
       letter-spacing: 1px;
+
+      text-transform: uppercase;
     }
 
     .section-title h2 {
-      font-size: clamp(32px, 5vw, 48px);
-      margin: 8px 0 12px;
+      font-size:
+        clamp(32px, 5vw, 48px);
+
       line-height: 1.1;
+
+      margin:
+        8px 0 14px;
     }
 
     .section-title p {
-      color: var(--muted);
+      color: var(--text-soft);
     }
 
-    /* ---------------- SERVICES ---------------- */
+
+    /* =========================================================
+       SERVICES
+    ========================================================= */
 
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
       gap: 22px;
     }
 
     .service-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 30px;
-      box-shadow: 0 8px 25px rgba(60,35,20,.05);
-      transition: .3s;
       position: relative;
+
       overflow: hidden;
+
+      background: white;
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 21px;
+
+      padding: 30px;
+
+      box-shadow:
+        var(--shadow-small);
+
+      transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
     }
 
     .service-card::after {
       content: "";
+
       position: absolute;
-      width: 80px;
-      height: 80px;
+
+      width: 85px;
+      height: 85px;
+
+      right: -30px;
+      top: -30px;
+
       border-radius: 50%;
+
       background: #fff0e9;
-      right: -25px;
-      top: -25px;
-      transition: .3s;
+
+      transition:
+        transform 0.35s ease;
     }
 
     .service-card:hover {
-      transform: translateY(-8px) rotate(.4deg);
-      box-shadow: var(--shadow);
+      transform:
+        translateY(-8px)
+        rotate(0.4deg);
+
+      box-shadow:
+        var(--shadow);
+    }
+
+    .service-card:hover::after {
+      transform:
+        scale(1.25);
     }
 
     .service-icon {
-      width: 55px;
-      height: 55px;
-      display: grid;
-      place-items: center;
-      border-radius: 15px;
-      background: #fff0e9;
-      font-size: 27px;
-      margin-bottom: 20px;
       position: relative;
+
       z-index: 2;
+
+      width: 56px;
+      height: 56px;
+
+      display: grid;
+
+      place-items: center;
+
+      border-radius: 16px;
+
+      background: #fff0e9;
+
+      font-size: 28px;
+
+      margin-bottom: 20px;
+
+      transition:
+        transform 0.35s ease;
+    }
+
+    .service-card:hover .service-icon {
+      transform:
+        rotate(-5deg)
+        scale(1.08);
     }
 
     .service-card h3 {
-      margin-bottom: 10px;
       font-size: 21px;
+
+      margin-bottom: 10px;
     }
 
     .service-card p {
-      color: var(--muted);
+      color: var(--text-soft);
     }
 
-    /* ---------------- PRICES ---------------- */
+
+    /* =========================================================
+       TARIFS
+    ========================================================= */
 
     .pricing {
-      background: var(--bg2);
+      background:
+        var(--background-soft);
     }
 
     .pricing-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
       gap: 22px;
+
       align-items: stretch;
     }
 
     .price-card {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      padding: 32px;
       position: relative;
-      transition: .3s;
+
+      background: white;
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 22px;
+
+      padding: 32px;
+
+      transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
     }
 
     .price-card:hover {
-      transform: translateY(-7px);
-      box-shadow: var(--shadow);
+      transform:
+        translateY(-7px);
+
+      box-shadow:
+        var(--shadow);
     }
 
     .price-card.featured {
-      border: 2px solid var(--primary);
-      transform: translateY(-10px);
-      box-shadow: 0 18px 45px rgba(255,107,74,.18);
+      border:
+        2px solid var(--orange);
+
+      transform:
+        translateY(-10px);
+
+      box-shadow:
+        0 20px 50px
+        rgba(255, 104, 71, 0.18);
     }
 
     .price-card.featured:hover {
-      transform: translateY(-15px);
+      transform:
+        translateY(-15px);
     }
 
     .popular {
       position: absolute;
+
       top: -14px;
+
       right: 22px;
-      background: var(--primary);
-      color: white;
-      padding: 6px 12px;
+
+      padding:
+        6px 12px;
+
       border-radius: 20px;
+
+      background:
+        var(--orange);
+
+      color: white;
+
       font-size: 12px;
-      font-weight: 800;
+
+      font-weight: 900;
     }
 
     .price-card h3 {
       font-size: 22px;
+
       margin-bottom: 8px;
     }
 
     .price {
-      font-size: 42px;
+      color: var(--orange);
+
+      font-size: 43px;
+
       font-weight: 900;
-      color: var(--primary);
-      margin: 10px 0 20px;
+
+      margin:
+        10px 0 20px;
     }
 
     .price span {
-      font-size: 15px;
-      color: var(--muted);
+      color: var(--text-soft);
+
+      font-size: 14px;
+
       font-weight: 500;
     }
 
     .price-card ul {
       list-style: none;
+
       margin-bottom: 25px;
     }
 
     .price-card li {
-      margin: 10px 0;
-      color: var(--muted);
+      color: var(--text-soft);
+
+      margin:
+        10px 0;
     }
 
     .price-card li::before {
       content: "✓";
-      color: var(--green);
-      font-weight: bold;
+
+      color:
+        var(--green);
+
+      font-weight: 900;
+
       margin-right: 9px;
     }
 
     .custom-price {
       margin-top: 25px;
-      background: white;
-      border: 1px dashed var(--primary);
-      border-radius: 18px;
-      padding: 25px;
+
+      padding: 27px;
+
       text-align: center;
+
+      background: white;
+
+      border:
+        1px dashed var(--orange);
+
+      border-radius: 19px;
     }
 
     .custom-price h3 {
@@ -643,61 +921,87 @@ document.querySelectorAll('.btn').forEach(function(button) {
     }
 
     .custom-price p {
-      color: var(--muted);
-      margin-bottom: 16px;
+      color: var(--text-soft);
+
+      margin-bottom: 17px;
     }
 
-    /* ---------------- REALISATIONS ---------------- */
+
+    /* =========================================================
+       REALISATIONS
+    ========================================================= */
 
     .projects {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
       gap: 22px;
     }
 
     .project {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 20px;
       overflow: hidden;
-      transition: .3s;
+
+      background: white;
+
+      border:
+        1px solid var(--border);
+
+      border-radius: 20px;
+
+      transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
     }
 
     .project:hover {
-      transform: translateY(-7px);
-      box-shadow: var(--shadow);
+      transform:
+        translateY(-8px);
+
+      box-shadow:
+        var(--shadow);
     }
 
     .project-visual {
-      height: 170px;
+      height: 175px;
+
       display: grid;
+
       place-items: center;
-      font-size: 55px;
-      position: relative;
-      overflow: hidden;
+
+      font-size: 58px;
+
+      transition:
+        transform 0.4s ease;
     }
 
-    .visual1 {
-      background: #ffe0d6;
+    .project:hover .project-visual {
+      transform:
+        scale(1.04);
     }
 
-    .visual2 {
-      background: #dff2ff;
+    .visual-restaurant {
+      background: #ffe0d5;
     }
 
-    .visual3 {
-      background: #fff0b8;
+    .visual-coiffeur {
+      background: #dff3ff;
     }
 
-    .visual4 {
-      background: #e4f7e7;
+    .visual-artisan {
+      background: #fff0bb;
     }
 
-    .visual5 {
+    .visual-plombier {
+      background: #e3f7e6;
+    }
+
+    .visual-photo {
       background: #ffe1ec;
     }
 
-    .visual6 {
+    .visual-commerce {
       background: #e7e1ff;
     }
 
@@ -710,208 +1014,384 @@ document.querySelectorAll('.btn').forEach(function(button) {
     }
 
     .project-content p {
-      color: var(--muted);
+      color: var(--text-soft);
+
       font-size: 14px;
     }
 
     .demo-label {
       display: inline-block;
+
       margin-top: 12px;
-      padding: 5px 9px;
-      background: #f4f4f4;
+
+      padding:
+        5px 9px;
+
+      background:
+        #f3f3f3;
+
       border-radius: 8px;
-      font-size: 11px;
-      color: var(--muted);
-      font-weight: 700;
+
+      color: var(--text-soft);
+
+      font-size: 10px;
+
+      font-weight: 900;
     }
 
-    /* ---------------- ABOUT ---------------- */
+
+    /* =========================================================
+       A PROPOS
+    ========================================================= */
 
     .about {
-      background: var(--bg2);
+      background:
+        var(--background-soft);
     }
 
     .about-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+
+      grid-template-columns:
+        1fr 1fr;
+
       gap: 45px;
+
       align-items: center;
     }
 
+    .about-text small {
+      color: var(--orange);
+
+      font-weight: 900;
+
+      letter-spacing: 1px;
+    }
+
     .about-text h2 {
-      font-size: clamp(34px, 5vw, 50px);
-      line-height: 1.1;
-      margin-bottom: 20px;
+      font-size:
+        clamp(34px, 5vw, 50px);
+
+      line-height: 1.08;
+
+      margin:
+        8px 0 20px;
     }
 
     .about-text h2 span {
-      color: var(--primary);
+      color:
+        var(--orange);
     }
 
     .about-text p {
-      color: var(--muted);
+      color:
+        var(--text-soft);
+
       margin-bottom: 15px;
     }
 
     .about-box {
       background: white;
-      padding: 30px;
+
+      border:
+        1px solid var(--border);
+
       border-radius: 22px;
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
+
+      padding: 30px;
+
+      box-shadow:
+        var(--shadow);
+    }
+
+    .about-box h3 {
+      margin-bottom: 14px;
     }
 
     .info {
       display: flex;
+
       justify-content: space-between;
+
       gap: 20px;
-      padding: 16px 0;
-      border-bottom: 1px solid var(--border);
+
+      padding:
+        16px 0;
+
+      border-bottom:
+        1px solid var(--border);
     }
 
     .info:last-child {
       border-bottom: none;
     }
 
-    .info strong {
-      color: var(--primary);
+    .info span {
+      color:
+        var(--text-soft);
     }
 
-    /* ---------------- CONTACT ---------------- */
+    .info strong {
+      color:
+        var(--orange);
+
+      text-align: right;
+    }
+
+
+    /* =========================================================
+       CONTACT
+    ========================================================= */
 
     .contact-box {
-      background: var(--text);
-      color: white;
-      border-radius: 28px;
-      padding: 55px;
-      text-align: center;
       position: relative;
+
       overflow: hidden;
+
+      padding:
+        58px 35px;
+
+      text-align: center;
+
+      color: white;
+
+      background:
+        var(--text);
+
+      border-radius: 29px;
     }
 
     .contact-box::before {
       content: "✦";
+
       position: absolute;
-      font-size: 180px;
-      color: rgba(255,255,255,.04);
-      top: -70px;
+
       left: -20px;
-      animation: spin 18s linear infinite;
+      top: -70px;
+
+      font-size: 180px;
+
+      color:
+        rgba(255, 255, 255, 0.035);
+
+      animation:
+        slowSpin
+        18s
+        linear
+        infinite;
     }
 
     .contact-box::after {
       content: "●";
+
       position: absolute;
-      font-size: 150px;
-      color: rgba(255,107,74,.10);
-      right: -40px;
-      bottom: -70px;
+
+      right: -45px;
+      bottom: -80px;
+
+      font-size: 170px;
+
+      color:
+        rgba(255, 104, 71, 0.09);
     }
 
-    @keyframes spin {
+    @keyframes slowSpin {
+      from {
+        transform:
+          rotate(0deg);
+      }
+
       to {
-        transform: rotate(360deg);
+        transform:
+          rotate(360deg);
       }
     }
 
     .contact-box h2 {
-      font-size: clamp(32px, 5vw, 50px);
-      margin-bottom: 15px;
       position: relative;
+
       z-index: 2;
+
+      font-size:
+        clamp(32px, 5vw, 50px);
+
+      line-height: 1.1;
+
+      margin-bottom: 15px;
     }
 
-    .contact-box p {
-      color: #d1d5db;
-      max-width: 650px;
-      margin: 0 auto 28px;
+    .contact-box > p {
       position: relative;
+
       z-index: 2;
+
+      max-width: 650px;
+
+      margin:
+        0 auto 28px;
+
+      color:
+        #d1d5db;
     }
 
     .contact-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
       position: relative;
+
       z-index: 2;
+
+      display: flex;
+
+      justify-content: center;
+
+      flex-wrap: wrap;
+
+      gap: 12px;
     }
 
     .contact-buttons .btn-secondary {
       background: white;
+
       color: var(--text);
     }
 
     .contact-details {
-      margin-top: 30px;
-      color: #d1d5db;
       position: relative;
+
       z-index: 2;
+
+      margin-top: 28px;
+
+      color:
+        #d1d5db;
     }
 
-    /* ---------------- FOOTER ---------------- */
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
 
     footer {
-      padding: 35px 0;
-      border-top: 1px solid var(--border);
       background: white;
+
+      border-top:
+        1px solid var(--border);
+
+      padding:
+        35px 0;
     }
 
     .footer-content {
       display: flex;
-      justify-content: space-between;
-      gap: 20px;
+
       align-items: center;
+
+      justify-content: space-between;
+
+      gap: 20px;
     }
 
     footer p {
-      color: var(--muted);
+      color:
+        var(--text-soft);
+
       font-size: 14px;
     }
 
-    /* ---------------- RESPONSIVE ---------------- */
+    .back-top {
+      color:
+        var(--orange);
 
-    @media (max-width: 900px) {
+      font-weight: 800;
+
+      font-size: 14px;
+    }
+
+
+    /* =========================================================
+       APPARITION DES ELEMENTS
+    ========================================================= */
+
+    .reveal {
+      opacity: 0;
+
+      transform:
+        translateY(20px);
+
+      transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+
+      transform:
+        translateY(0);
+    }
+
+
+    /* =========================================================
+       RESPONSIVE TABLETTE
+    ========================================================= */
+
+    @media (max-width: 950px) {
 
       .services-grid,
       .pricing-grid,
       .projects {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns:
+          repeat(2, 1fr);
       }
 
       .about-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns:
+          1fr;
       }
 
-      .hero-drawings {
-        opacity: .35;
+      .hero-illustration {
+        opacity: 0.3;
+
         right: 0;
       }
+
     }
 
-    @media (max-width: 650px) {
+
+    /* =========================================================
+       RESPONSIVE TELEPHONE
+    ========================================================= */
+
+    @media (max-width: 680px) {
+
+      header {
+        position: sticky;
+      }
+
+      nav {
+        min-height: 65px;
+      }
 
       .nav-links {
         display: none;
       }
 
-      nav {
-        min-height: 64px;
-      }
-
       .nav-button {
-        padding: 9px 13px;
-        font-size: 13px;
+        padding:
+          9px 13px;
+
+        font-size: 12px;
       }
 
       .hero {
         min-height: auto;
-        padding: 70px 0 80px;
+
+        padding:
+          70px 0 80px;
       }
 
       .hero h1 {
         font-size: 45px;
+
         letter-spacing: -2px;
       }
 
@@ -919,18 +1399,34 @@ document.querySelectorAll('.btn').forEach(function(button) {
         font-size: 17px;
       }
 
-      .hero-drawings {
+      .hero-buttons {
+        flex-direction: column;
+      }
+
+      .hero-buttons .btn {
+        width: 100%;
+      }
+
+      .hero-illustration {
         display: none;
       }
 
+      .floating-web {
+        font-size: 22px;
+
+        opacity: 0.20;
+      }
+
       section {
-        padding: 65px 0;
+        padding:
+          65px 0;
       }
 
       .services-grid,
       .pricing-grid,
       .projects {
-        grid-template-columns: 1fr;
+        grid-template-columns:
+          1fr;
       }
 
       .price-card.featured {
@@ -938,541 +1434,1137 @@ document.querySelectorAll('.btn').forEach(function(button) {
       }
 
       .price-card.featured:hover {
-        transform: translateY(-7px);
+        transform:
+          translateY(-7px);
       }
 
       .contact-box {
-        padding: 38px 22px;
+        padding:
+          42px 22px;
       }
 
-      .footer-content {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .buttons,
       .contact-buttons {
         flex-direction: column;
       }
 
-      .buttons .btn,
       .contact-buttons .btn {
         width: 100%;
       }
+
+      .footer-content {
+        flex-direction: column;
+
+        text-align: center;
+      }
+
+      .info {
+        flex-direction: column;
+
+        gap: 4px;
+      }
+
+      .info strong {
+        text-align: left;
+      }
+
     }
+
+
+    /* =========================================================
+       REDUCTION DES ANIMATIONS SI NECESSAIRE
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation:
+          none !important;
+
+        transition:
+          none !important;
+
+        scroll-behavior:
+          auto !important;
+      }
+
+    }
+
   </style>
 </head>
 
+
 <body>
 
-  <div class="background-shape shape1"></div>
-  <div class="background-shape shape2"></div>
-  <div class="background-shape shape3"></div>
+  <!-- =========================================================
+       ELEMENTS DE FOND
+  ========================================================= -->
 
-  <!-- HEADER -->
+  <div class="background-shape one"></div>
+  <div class="background-shape two"></div>
+  <div class="background-shape three"></div>
+
+  <div class="floating-web web-one">💻</div>
+  <div class="floating-web web-two">✦</div>
+  <div class="floating-web web-three">&lt;/&gt;</div>
+  <div class="floating-web web-four">🖱️</div>
+
+
+  <!-- =========================================================
+       HEADER
+  ========================================================= -->
 
   <header>
+
     <div class="container">
+
       <nav>
-        <a href="#accueil" class="logo">Medjekal Zakaria</a>
+
+        <a
+          href="#accueil"
+          class="logo"
+        >
+          Medjekal Zakaria
+        </a>
+
 
         <ul class="nav-links">
-          <li><a href="#services">Services</a></li>
-          <li><a href="#tarifs">Tarifs</a></li>
-          <li><a href="#realisations">Réalisations</a></li>
-          <li><a href="#apropos">À propos</a></li>
-          <li><a href="#contact">Contact</a></li>
+
+          <li>
+            <a href="#services">
+              Services
+            </a>
+          </li>
+
+          <li>
+            <a href="#tarifs">
+              Tarifs
+            </a>
+          </li>
+
+          <li>
+            <a href="#realisations">
+              Réalisations
+            </a>
+          </li>
+
+          <li>
+            <a href="#apropos">
+              À propos
+            </a>
+          </li>
+
+          <li>
+            <a href="#contact">
+              Contact
+            </a>
+          </li>
+
         </ul>
 
-        <a class="nav-button" href="#contact">Demander un devis</a>
+
+        <a
+          href="#contact"
+          class="nav-button"
+        >
+          Demander un devis
+        </a>
+
       </nav>
+
     </div>
+
   </header>
 
 
-  <!-- ACCUEIL -->
+  <!-- =========================================================
+       CONTENU PRINCIPAL
+  ========================================================= -->
 
   <main>
 
-    <section class="hero" id="accueil">
+
+    <!-- =======================================================
+         ACCUEIL
+    ======================================================= -->
+
+    <section
+      class="hero"
+      id="accueil"
+    >
+
       <div class="container">
+
         <div class="hero-content">
 
-          <div class="badge">🌐 Création de sites web • Grenoble & France</div>
+          <div class="badge">
+            🌐 Création de sites web
+            <span>•</span>
+            Grenoble & France
+          </div>
+
 
           <h1>
+
             Votre site internet
-            <span>professionnel.</span>
+            <span>
+              professionnel.
+            </span>
+
           </h1>
 
+
           <p>
-            Je crée des sites modernes, élégants et adaptés à votre activité,
-            pour vous aider à présenter votre entreprise et attirer vos futurs clients.
+
+            Je crée des sites modernes, élégants et adaptés
+            à votre activité pour vous aider à présenter votre
+            entreprise et attirer vos futurs clients.
+
           </p>
 
-          <div class="buttons">
-            <a href="#contact" class="btn btn-primary">
+
+          <div class="hero-buttons">
+
+            <a
+              href="#contact"
+              class="btn btn-primary attention-button"
+            >
               🚀 Demander un devis
             </a>
 
-            <a href="mailto:medjekalzakaria38@gmail.com" class="btn btn-secondary">
+
+            <a
+              href="mailto:medjekalzakaria38@gmail.com"
+              class="btn btn-secondary attention-button"
+            >
               ✉️ Me contacter
             </a>
 
-            <a href="tel:0695378780" class="btn btn-secondary">
+
+            <a
+              href="tel:0695378780"
+              class="btn btn-secondary attention-button"
+            >
               📞 Appeler maintenant
             </a>
+
           </div>
 
         </div>
 
-        <div class="hero-drawings">
-          <div class="drawing">💻</div>
-          <div class="drawing">✨</div>
-          <div class="drawing">🖥️</div>
-          <div class="drawing">⚡</div>
+
+        <div class="hero-illustration">
+
+          <div class="hero-icon one">
+            💻
+          </div>
+
+          <div class="hero-icon two">
+            ✨
+          </div>
+
+          <div class="hero-icon three">
+            🖥️
+          </div>
+
+          <div class="hero-icon four">
+            ⚡
+          </div>
+
         </div>
+
       </div>
+
     </section>
 
 
-    <!-- SERVICES -->
+    <!-- =======================================================
+         SERVICES
+    ======================================================= -->
 
-    <section id="services">
+    <section
+      id="services"
+    >
+
       <div class="container">
 
         <div class="section-title">
-          <small>Mes services</small>
-          <h2>Un site pensé pour votre activité.</h2>
+
+          <small>
+            Mes services
+          </small>
+
+          <h2>
+            Un site pensé pour votre activité.
+          </h2>
+
           <p>
-            Je m'occupe de créer une présence en ligne claire, moderne et professionnelle.
+            Je crée une présence en ligne claire,
+            moderne et professionnelle.
           </p>
+
         </div>
+
 
         <div class="services-grid">
 
-          <div class="service-card">
-            <div class="service-icon">💻</div>
-            <h3>Site vitrine</h3>
+
+          <div class="service-card reveal">
+
+            <div class="service-icon">
+              💻
+            </div>
+
+            <h3>
+              Site vitrine
+            </h3>
+
             <p>
-              Présentez votre entreprise, vos services et vos informations
-              essentielles avec un site professionnel.
+              Présentez votre entreprise, vos services
+              et vos informations essentielles avec un
+              site professionnel.
             </p>
+
           </div>
 
-          <div class="service-card">
-            <div class="service-icon">🎨</div>
-            <h3>Design personnalisé</h3>
+
+          <div class="service-card reveal">
+
+            <div class="service-icon">
+              🎨
+            </div>
+
+            <h3>
+              Design personnalisé
+            </h3>
+
             <p>
-              Une identité visuelle adaptée à votre activité et à l'image
-              que vous souhaitez donner à vos visiteurs.
+              Une identité visuelle adaptée à votre activité
+              et à l'image que vous souhaitez donner.
             </p>
+
           </div>
 
-          <div class="service-card">
-            <div class="service-icon">📱</div>
-            <h3>Adapté au mobile</h3>
+
+          <div class="service-card reveal">
+
+            <div class="service-icon">
+              📱
+            </div>
+
+            <h3>
+              Adapté au mobile
+            </h3>
+
             <p>
-              Votre site s'adapte automatiquement aux téléphones,
+              Votre site s'adapte aux téléphones,
               tablettes et ordinateurs.
             </p>
+
           </div>
 
-          <div class="service-card">
-            <div class="service-icon">⚡</div>
-            <h3>Site moderne</h3>
+
+          <div class="service-card reveal">
+
+            <div class="service-icon">
+              ⚡
+            </div>
+
+            <h3>
+              Site moderne
+            </h3>
+
             <p>
-              Des animations légères et une navigation agréable sans
-              surcharger votre site.
+              Des animations légères et une navigation
+              agréable sans surcharger le site.
             </p>
+
           </div>
 
-          <div class="service-card">
-            <div class="service-icon">🔧</div>
-            <h3>Sur mesure</h3>
+
+          <div class="service-card reveal">
+
+            <div class="service-icon">
+              🔧
+            </div>
+
+            <h3>
+              Création sur mesure
+            </h3>
+
             <p>
-              Besoin d'une fonctionnalité particulière ? Nous pouvons
-              définir ensemble une solution adaptée.
+              Besoin d'une fonctionnalité particulière ?
+              Nous définissons ensemble une solution adaptée.
             </p>
+
           </div>
 
-          <div class="service-card">
-            <div class="service-icon">🚀</div>
-            <h3>Mise en ligne</h3>
+
+          <div class="service-card reveal">
+
+            <div class="service-icon">
+              🚀
+            </div>
+
+            <h3>
+              Mise en ligne
+            </h3>
+
             <p>
-              Je peux vous accompagner dans la préparation et la mise
-              en ligne de votre site internet.
+              Je peux vous accompagner dans la préparation
+              et la mise en ligne de votre site.
             </p>
+
           </div>
+
 
         </div>
+
       </div>
+
     </section>
 
 
-    <!-- TARIFS -->
+    <!-- =======================================================
+         TARIFS
+    ======================================================= -->
 
-    <section class="pricing" id="tarifs">
+    <section
+      class="pricing"
+      id="tarifs"
+    >
+
       <div class="container">
 
         <div class="section-title">
-          <small>Mes tarifs</small>
-          <h2>Des offres simples et transparentes.</h2>
+
+          <small>
+            Mes tarifs
+          </small>
+
+          <h2>
+            Des offres simples et transparentes.
+          </h2>
+
           <p>
-            Choisissez l'offre qui correspond le mieux à votre projet.
+            Choisissez l'offre qui correspond le mieux
+            à votre projet.
           </p>
+
         </div>
+
 
         <div class="pricing-grid">
 
-          <div class="price-card">
-            <h3>Site classique</h3>
+
+          <!-- SITE CLASSIQUE -->
+
+          <div class="price-card reveal">
+
+            <h3>
+              Site classique
+            </h3>
 
             <div class="price">
-              500€ <span>/ projet</span>
+              500€
+              <span>
+                / projet
+              </span>
             </div>
 
             <ul>
-              <li>Site vitrine moderne</li>
-              <li>Présentation de votre activité</li>
-              <li>Design professionnel</li>
-              <li>Compatible mobile</li>
-              <li>Boutons de contact</li>
+
+              <li>
+                Site vitrine moderne
+              </li>
+
+              <li>
+                Présentation de votre activité
+              </li>
+
+              <li>
+                Design professionnel
+              </li>
+
+              <li>
+                Compatible mobile
+              </li>
+
+              <li>
+                Boutons de contact
+              </li>
+
             </ul>
 
-            <a href="#contact" class="btn btn-secondary">
+
+            <a
+              href="#contact"
+              class="btn btn-secondary"
+            >
               Choisir cette offre
             </a>
+
           </div>
 
 
-          <div class="price-card featured">
-            <div class="popular">⭐ LA PLUS POPULAIRE</div>
+          <!-- SITE PROFESSIONNEL -->
 
-            <h3>Site professionnel</h3>
+          <div class="price-card featured reveal">
 
-            <div class="price">
-              600€ <span>/ projet</span>
+            <div class="popular">
+              ⭐ LA PLUS POPULAIRE
             </div>
 
-            <ul>
-              <li>Site plus complet</li>
-              <li>Plusieurs pages</li>
-              <li>Design personnalisé</li>
-              <li>Compatible mobile</li>
-              <li>Animations légères</li>
-              <li>Présentation professionnelle</li>
-            </ul>
 
-            <a href="#contact" class="btn btn-primary">
-              Choisir cette offre
-            </a>
-          </div>
+            <h3>
+              Site professionnel
+            </h3>
 
-
-          <div class="price-card">
-            <h3>Site premium</h3>
 
             <div class="price">
-              900€ <span>/ projet</span>
+              600€
+              <span>
+                / projet
+              </span>
             </div>
 
+
             <ul>
-              <li>Design haut de gamme</li>
-              <li>Plusieurs pages</li>
-              <li>Animations modernes</li>
-              <li>Design entièrement personnalisé</li>
-              <li>Optimisation mobile</li>
-              <li>Présentation très soignée</li>
+
+              <li>
+                Site plus complet
+              </li>
+
+              <li>
+                Plusieurs pages
+              </li>
+
+              <li>
+                Design personnalisé
+              </li>
+
+              <li>
+                Compatible mobile
+              </li>
+
+              <li>
+                Animations légères
+              </li>
+
+              <li>
+                Présentation professionnelle
+              </li>
+
             </ul>
 
-            <a href="#contact" class="btn btn-secondary">
+
+            <!--
+              CE BOUTON EST LE SEUL
+              "CHOISIR CETTE OFFRE"
+              QUI VIBRE
+            -->
+
+            <a
+              href="#contact"
+              class="btn btn-primary attention-button"
+            >
+              ⭐ Choisir cette offre
+            </a>
+
+          </div>
+
+
+          <!-- SITE PREMIUM -->
+
+          <div class="price-card reveal">
+
+            <h3>
+              Site premium
+            </h3>
+
+
+            <div class="price">
+              900€
+              <span>
+                / projet
+              </span>
+            </div>
+
+
+            <ul>
+
+              <li>
+                Design haut de gamme
+              </li>
+
+              <li>
+                Plusieurs pages
+              </li>
+
+              <li>
+                Animations modernes
+              </li>
+
+              <li>
+                Design entièrement personnalisé
+              </li>
+
+              <li>
+                Optimisation mobile
+              </li>
+
+              <li>
+                Présentation très soignée
+              </li>
+
+            </ul>
+
+
+            <a
+              href="#contact"
+              class="btn btn-secondary"
+            >
               Choisir cette offre
             </a>
+
           </div>
+
 
         </div>
 
-        <div class="custom-price">
-          <h3>🛠️ Création sur mesure — Sur devis</h3>
+
+        <!-- CREATION SUR MESURE -->
+
+        <div class="custom-price reveal">
+
+          <h3>
+            🛠️ Création sur mesure — Sur devis
+          </h3>
+
           <p>
-            Pour les projets nécessitant des fonctionnalités ou un design
-            particuliers, contactez-moi afin de discuter de votre projet.
+            Pour les projets nécessitant des fonctionnalités
+            ou un design particuliers, contactez-moi afin
+            de discuter de votre projet.
           </p>
 
-          <a href="mailto:medjekalzakaria38@gmail.com" class="btn btn-primary">
+
+          <a
+            href="mailto:medjekalzakaria38@gmail.com?subject=Demande%20de%20devis%20site%20internet"
+            class="btn btn-primary"
+          >
             Demander un devis personnalisé
           </a>
+
         </div>
 
       </div>
+
     </section>
 
 
-    <!-- REALISATIONS -->
+    <!-- =======================================================
+         REALISATIONS
+    ======================================================= -->
 
-    <section id="realisations">
+    <section
+      id="realisations"
+    >
+
       <div class="container">
 
         <div class="section-title">
-          <small>Mes réalisations</small>
-          <h2>Des exemples de projets.</h2>
+
+          <small>
+            Mes réalisations
+          </small>
+
+          <h2>
+            Des exemples de projets.
+          </h2>
+
           <p>
             Voici différents types de sites que je peux créer.
-            Ces exemples sont des démonstrations et ne représentent pas de faux clients.
+            Ces exemples sont des démonstrations et ne représentent
+            pas de faux clients.
           </p>
+
         </div>
+
 
         <div class="projects">
 
-          <div class="project">
-            <div class="project-visual visual1">🍽️</div>
-            <div class="project-content">
-              <h3>Restaurant</h3>
-              <p>
-                Présentation du restaurant, menu, horaires et réservation.
-              </p>
-              <span class="demo-label">DÉMONSTRATION</span>
+
+          <div class="project reveal">
+
+            <div class="project-visual visual-restaurant">
+              🍽️
             </div>
+
+            <div class="project-content">
+
+              <h3>
+                Restaurant
+              </h3>
+
+              <p>
+                Présentation du restaurant, menu,
+                horaires et réservation.
+              </p>
+
+              <span class="demo-label">
+                DÉMONSTRATION
+              </span>
+
+            </div>
+
           </div>
 
-          <div class="project">
-            <div class="project-visual visual2">✂️</div>
-            <div class="project-content">
-              <h3>Coiffeur</h3>
-              <p>
-                Présentation des prestations, tarifs et prise de contact.
-              </p>
-              <span class="demo-label">DÉMONSTRATION</span>
+
+          <div class="project reveal">
+
+            <div class="project-visual visual-coiffeur">
+              ✂️
             </div>
+
+            <div class="project-content">
+
+              <h3>
+                Coiffeur
+              </h3>
+
+              <p>
+                Présentation des prestations,
+                tarifs et prise de contact.
+              </p>
+
+              <span class="demo-label">
+                DÉMONSTRATION
+              </span>
+
+            </div>
+
           </div>
 
-          <div class="project">
-            <div class="project-visual visual3">🔨</div>
-            <div class="project-content">
-              <h3>Artisan</h3>
-              <p>
-                Une présentation claire des services et du savoir-faire.
-              </p>
-              <span class="demo-label">DÉMONSTRATION</span>
+
+          <div class="project reveal">
+
+            <div class="project-visual visual-artisan">
+              🔨
             </div>
+
+            <div class="project-content">
+
+              <h3>
+                Artisan
+              </h3>
+
+              <p>
+                Présentation claire des services
+                et du savoir-faire.
+              </p>
+
+              <span class="demo-label">
+                DÉMONSTRATION
+              </span>
+
+            </div>
+
           </div>
 
-          <div class="project">
-            <div class="project-visual visual4">🔧</div>
-            <div class="project-content">
-              <h3>Plombier</h3>
-              <p>
-                Site professionnel avec contact rapide et présentation des services.
-              </p>
-              <span class="demo-label">DÉMONSTRATION</span>
+
+          <div class="project reveal">
+
+            <div class="project-visual visual-plombier">
+              🔧
             </div>
+
+            <div class="project-content">
+
+              <h3>
+                Plombier
+              </h3>
+
+              <p>
+                Site professionnel avec contact rapide
+                et présentation des services.
+              </p>
+
+              <span class="demo-label">
+                DÉMONSTRATION
+              </span>
+
+            </div>
+
           </div>
 
-          <div class="project">
-            <div class="project-visual visual5">📷</div>
-            <div class="project-content">
-              <h3>Photographe</h3>
-              <p>
-                Galerie élégante pour présenter les photos et prestations.
-              </p>
-              <span class="demo-label">DÉMONSTRATION</span>
+
+          <div class="project reveal">
+
+            <div class="project-visual visual-photo">
+              📷
             </div>
+
+            <div class="project-content">
+
+              <h3>
+                Photographe
+              </h3>
+
+              <p>
+                Galerie élégante pour présenter
+                les photos et prestations.
+              </p>
+
+              <span class="demo-label">
+                DÉMONSTRATION
+              </span>
+
+            </div>
+
           </div>
 
-          <div class="project">
-            <div class="project-visual visual6">🏪</div>
-            <div class="project-content">
-              <h3>Commerce</h3>
-              <p>
-                Présentation d'une boutique et de ses produits ou services.
-              </p>
-              <span class="demo-label">DÉMONSTRATION</span>
+
+          <div class="project reveal">
+
+            <div class="project-visual visual-commerce">
+              🏪
             </div>
+
+            <div class="project-content">
+
+              <h3>
+                Commerce
+              </h3>
+
+              <p>
+                Présentation d'une boutique,
+                ses produits ou ses services.
+              </p>
+
+              <span class="demo-label">
+                DÉMONSTRATION
+              </span>
+
+            </div>
+
           </div>
+
 
         </div>
+
       </div>
+
     </section>
 
 
-    <!-- A PROPOS -->
+    <!-- =======================================================
+         A PROPOS
+    ======================================================= -->
 
-    <section class="about" id="apropos">
+    <section
+      class="about"
+      id="apropos"
+    >
+
       <div class="container">
 
         <div class="about-grid">
 
+
           <div class="about-text">
-            <small style="color:var(--primary);font-weight:800;">
+
+            <small>
               À PROPOS
             </small>
 
+
             <h2>
               Un site qui vous ressemble,
-              <span>simplement.</span>
+              <span>
+                simplement.
+              </span>
             </h2>
 
-            <p>
-              Je suis <strong>Medjekal Zakaria</strong>, créateur de sites
-              internet basé à Grenoble.
-            </p>
 
             <p>
-              Mon objectif est de proposer des sites modernes et professionnels
-              qui permettent aux entreprises, indépendants et commerces de
-              présenter leur activité efficacement sur internet.
+              Je suis
+              <strong>
+                Medjekal Zakaria
+              </strong>,
+              créateur de sites internet basé à Grenoble.
             </p>
+
 
             <p>
-              Chaque projet est pensé en fonction des besoins et de l'image
-              de l'activité.
+              Mon objectif est de proposer des sites modernes
+              et professionnels qui permettent aux entreprises,
+              indépendants et commerces de présenter efficacement
+              leur activité sur internet.
             </p>
 
-            <a href="#contact" class="btn btn-primary">
-              Parlons de votre projet
+
+            <p>
+              Chaque projet est pensé selon les besoins
+              et l'image de l'activité.
+            </p>
+
+
+            <a
+              href="#contact"
+              class="btn btn-primary attention-button"
+            >
+              💬 Parlons de votre projet
             </a>
+
           </div>
 
 
           <div class="about-box">
 
-            <h3 style="margin-bottom:15px;">
+            <h3>
               📍 Mes informations
             </h3>
 
-            <div class="info">
-              <span>Nom</span>
-              <strong>Medjekal Zakaria</strong>
-            </div>
 
             <div class="info">
-              <span>Localisation</span>
-              <strong>Grenoble, France</strong>
+
+              <span>
+                Nom
+              </span>
+
+              <strong>
+                Medjekal Zakaria
+              </strong>
+
             </div>
 
-            <div class="info">
-              <span>Activité</span>
-              <strong>Création web</strong>
-            </div>
 
             <div class="info">
-              <span>Zone</span>
-              <strong>France entière</strong>
+
+              <span>
+                Localisation
+              </span>
+
+              <strong>
+                Grenoble, France
+              </strong>
+
+            </div>
+
+
+            <div class="info">
+
+              <span>
+                Activité
+              </span>
+
+              <strong>
+                Création web
+              </strong>
+
+            </div>
+
+
+            <div class="info">
+
+              <span>
+                Zone
+              </span>
+
+              <strong>
+                France entière
+              </strong>
+
             </div>
 
           </div>
 
+
         </div>
+
       </div>
+
     </section>
 
 
-    <!-- CONTACT -->
+    <!-- =======================================================
+         CONTACT
+    ======================================================= -->
 
-    <section id="contact">
+    <section
+      id="contact"
+    >
+
       <div class="container">
 
         <div class="contact-box">
 
-          <h2>Votre projet commence ici.</h2>
+
+          <h2>
+            Votre projet commence ici.
+          </h2>
+
 
           <p>
             Vous avez besoin d'un site internet pour votre activité ?
             Contactez-moi et discutons ensemble de votre projet.
           </p>
 
+
           <div class="contact-buttons">
+
 
             <a
               href="mailto:medjekalzakaria38@gmail.com?subject=Demande%20de%20devis%20site%20internet"
-              class="btn btn-primary">
+              class="btn btn-primary attention-button"
+            >
               ✉️ Demander un devis
             </a>
 
+
             <a
               href="mailto:medjekalzakaria38@gmail.com"
-              class="btn btn-secondary">
+              class="btn btn-secondary attention-button"
+            >
               📩 Me contacter
             </a>
 
+
             <a
               href="tel:0695378780"
-              class="btn btn-secondary">
+              class="btn btn-secondary attention-button"
+            >
               📞 Appeler maintenant
             </a>
 
+
           </div>
 
+
           <div class="contact-details">
-            <p>
-              📍 Grenoble, France<br>
-              📞 06 95 37 87 80<br>
-              ✉️ medjekalzakaria38@gmail.com
-            </p>
+
+            📍 Grenoble, France
+            <br>
+
+            📞 06 95 37 87 80
+            <br>
+
+            ✉️ medjekalzakaria38@gmail.com
+
           </div>
+
 
         </div>
 
       </div>
+
     </section>
+
 
   </main>
 
 
-  <!-- FOOTER -->
+  <!-- =========================================================
+       FOOTER
+  ========================================================= -->
 
   <footer>
+
     <div class="container">
 
       <div class="footer-content">
+
 
         <strong class="logo">
           Medjekal Zakaria
         </strong>
 
+
         <p>
-          © 2026 — Création de sites web. Tous droits réservés.
+          © 2026 — Création de sites web.
+          Tous droits réservés.
         </p>
 
-        <a href="#accueil">
+
+        <a
+          href="#accueil"
+          class="back-top"
+        >
           ↑ Retour en haut
         </a>
+
 
       </div>
 
     </div>
+
   </footer>
 
 
-  <!-- PETITE ANIMATION AU SCROLL -->
+  <!-- =========================================================
+       JAVASCRIPT
+  ========================================================= -->
 
   <script>
-    const cards = document.querySelectorAll(
-      ".service-card, .price-card, .project"
-    );
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.style.opacity = "1";
-            entry.target.style.transform = "translateY(0)";
-          }
-        });
-      },
-      {
-        threshold: 0.12
+    /* =========================================================
+       ANIMATION AU SCROLL
+    ========================================================= */
+
+    const revealElements =
+      document.querySelectorAll(".reveal");
+
+
+    const revealObserver =
+      new IntersectionObserver(
+
+        function(entries) {
+
+          entries.forEach(
+
+            function(entry) {
+
+              if (entry.isIntersecting) {
+
+                entry.target.classList.add(
+                  "visible"
+                );
+
+                revealObserver.unobserve(
+                  entry.target
+                );
+
+              }
+
+            }
+
+          );
+
+        },
+
+        {
+          threshold: 0.12
+        }
+
+      );
+
+
+    revealElements.forEach(
+
+      function(element) {
+
+        revealObserver.observe(
+          element
+        );
+
       }
+
     );
 
-    cards.forEach((card) => {
-      card.style.opacity = "0";
-      card.style.transform = "translateY(20px)";
-      card.style.transition = "opacity .6s ease, transform .6s ease";
-      observer.observe(card);
-    });
+
   </script>
+
 
 </body>
 </html>
