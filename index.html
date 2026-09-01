@@ -1,6 +1,37 @@
 <!DOCTYPE html>
 <html lang="fr">
-<style>
+/* ===== BOUTONS QUI ATTIRENT L'ATTENTION ===== */
+
+.attention-button {
+  animation: gentleVibrate 2.8s ease-in-out infinite;
+}
+
+@keyframes gentleVibrate {
+  0%, 82%, 100% {
+    transform: translateX(0);
+  }
+
+  84% {
+    transform: translateX(-2px) rotate(-0.5deg);
+  }
+
+  86% {
+    transform: translateX(2px) rotate(0.5deg);
+  }
+
+  88% {
+    transform: translateX(-2px) rotate(-0.5deg);
+  }
+
+  90% {
+    transform: translateX(2px) rotate(0.5deg);
+  }
+
+  92% {
+    transform: translateX(0);
+  }
+}
+  <style>
 /* ===== PETITES ANIMATIONS ===== */
 
 /* Cartes légèrement animées */
@@ -144,6 +175,24 @@
       scroll-behavior: smooth;
     }
 
+   <script>
+document.querySelectorAll('.btn').forEach(function(button) {
+  const text = button.textContent.toLowerCase();
+
+  if (
+    text.includes('demander un devis') ||
+    text.includes('me contacter') ||
+    text.includes('appeler maintenant') ||
+    text.includes('parlons de votre projet') ||
+    (
+      text.includes('choisir cette offre') &&
+      button.closest('.price-card')?.classList.contains('featured')
+    )
+  ) {
+    button.classList.add('attention-button');
+  }
+});
+</script>
     body {
       <div class="floating-shape one"></div>
 <div class="floating-shape two"></div>
