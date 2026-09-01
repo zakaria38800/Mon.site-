@@ -1,6 +1,119 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
+<style>
+/* ===== PETITES ANIMATIONS ===== */
+
+/* Cartes légèrement animées */
+.service-card,
+.price-card,
+.project {
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.service-card:hover,
+.price-card:hover,
+.project:hover {
+  transform: translateY(-7px);
+}
+
+/* Petites formes flottantes */
+.floating-shape {
+  position: fixed;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.25;
+  animation: floating 7s ease-in-out infinite;
+}
+
+.floating-shape.one {
+  width: 55px;
+  height: 55px;
+  border-radius: 18px;
+  background: #ffb59f;
+  top: 25%;
+  left: 6%;
+  transform: rotate(20deg);
+}
+
+.floating-shape.two {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: #70c9ff;
+  top: 62%;
+  right: 8%;
+  animation-delay: 2s;
+}
+
+.floating-shape.three {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: #ffd45c;
+  top: 78%;
+  left: 12%;
+  transform: rotate(25deg);
+  animation-delay: 4s;
+}
+
+@keyframes floating {
+  0%, 100% {
+    margin-top: 0;
+  }
+
+  50% {
+    margin-top: -18px;
+  }
+}
+
+/* Petit effet sur les boutons */
+.btn {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+}
+
+/* Animation douce des icônes */
+.service-icon {
+  transition: transform 0.35s ease;
+}
+
+.service-card:hover .service-icon {
+  transform: rotate(-5deg) scale(1.08);
+}
+
+/* Animation des emojis des réalisations */
+.project-visual {
+  transition: transform 0.4s ease;
+}
+
+.project:hover .project-visual {
+  transform: scale(1.03);
+}
+
+/* Petit mouvement du logo */
+.logo {
+  transition: transform 0.25s ease;
+  display: inline-block;
+}
+
+.logo:hover {
+  transform: rotate(-2deg) scale(1.03);
+}
+
+/* Respecte les appareils qui demandent moins d'animations */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+</style>
+  <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -32,6 +145,9 @@
     }
 
     body {
+      <div class="floating-shape one"></div>
+<div class="floating-shape two"></div>
+<div class="floating-shape three"></div>
       font-family: Arial, Helvetica, sans-serif;
       background: var(--bg);
       color: var(--text);
